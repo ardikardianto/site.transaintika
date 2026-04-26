@@ -266,7 +266,7 @@ export default function TranSaintikaLandingPage() {
             </a>
 
             <a
-              href="mailto:transaintika@gmail.com"
+              href="mailto:hello@transaintika.com"
               className="group flex items-center gap-4 rounded-2xl border border-neutral-200 p-5 transition hover:border-neutral-950"
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
@@ -274,7 +274,7 @@ export default function TranSaintikaLandingPage() {
               </span>
               <span>
                 <span className="block text-sm text-neutral-500">Email</span>
-                <span className="block font-semibold text-neutral-950">transaintika@gmail.com</span>
+                <span className="block font-semibold text-neutral-950">hello@transaintika.com</span>
               </span>
             </a>
 
