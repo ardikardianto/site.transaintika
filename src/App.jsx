@@ -90,17 +90,17 @@ export default function TranSaintikaLandingPage() {
 
   return (
     <main className="min-h-screen scroll-smooth bg-white text-neutral-950">
-      <header className="sticky top-0 z-50 border-b border-neutral-100 bg-white/85 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+      <header className="sticky top-4 z-50 px-4">
+        <nav className="mx-auto flex max-w-3xl items-center justify-between rounded-full border border-neutral-100 bg-white/90 px-5 py-3 shadow-xl shadow-neutral-200/70 backdrop-blur-xl md:px-7">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="cursor-pointer bg-transparent p-0 text-xl font-semibold tracking-tight text-neutral-950 md:text-2xl"
+            className="cursor-pointer bg-transparent p-0 text-xl font-bold tracking-tight text-neutral-950 md:text-3xl"
           >
             TranSaintika
           </button>
 
-          <div className="hidden items-center gap-8 text-sm font-medium text-neutral-600 md:flex">
+          <div className="hidden items-center gap-8 text-sm font-medium text-neutral-700 md:flex">
             <button
               type="button"
               onClick={() => scrollToSection("home")}
@@ -128,7 +128,7 @@ export default function TranSaintikaLandingPage() {
             href="https://wa.me/6285156501766"
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-neutral-800"
+            className="rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-neutral-800 md:px-6"
           >
             WhatsApp
           </a>
