@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 function Icon({ type, className = "h-5 w-5" }) {
   const iconProps = {
@@ -59,6 +60,139 @@ function Icon({ type, className = "h-5 w-5" }) {
   return null;
 }
 
+function OpeningAnimation() {
+  const [isVisible, setIsVisible] = useState(true);
+  const shouldReduceMotion = useReducedMotion();
+  const floatingWords = ["Meaning", "Makna", "Clarity", "Bahasa", "Context", "Tone"];
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const timer = window.setTimeout(() => {
+      setIsVisible(false);
+      document.body.style.overflow = previousOverflow;
+    }, shouldReduceMotion ? 900 : 3400);
+
+    return () => {
+      window.clearTimeout(timer);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [shouldReduceMotion]);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-neutral-950 text-white"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, y: "-4%" }}
+          transition={{ duration: shouldReduceMotion ? 0.2 : 0.75, ease: [0.76, 0, 0.24, 1] }}
+          aria-label="TranSaintika opening animation"
+        >
+          <motion.div
+            className="absolute inset-x-[-15%] top-1/2 h-56 -translate-y-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),transparent_62%)] blur-3xl"
+            initial={{ scaleX: 0.35, opacity: 0 }}
+            animate={{ scaleX: 1.15, opacity: shouldReduceMotion ? 0.25 : [0.2, 0.65, 0.2] }}
+            transition={{ duration: shouldReduceMotion ? 0.4 : 2.8, ease: "easeInOut" }}
+          />
+
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.08)_0%,transparent_30%,rgba(255,255,255,0.11)_52%,transparent_76%)]" />
+
+          {!shouldReduceMotion && (
+            <div className="absolute inset-0" aria-hidden="true">
+              {floatingWords.map((word, index) => (
+                <motion.span
+                  key={word}
+                  className="absolute rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur-md"
+                  style={{
+                    left: `${12 + ((index * 15) % 72)}%`,
+                    top: `${18 + ((index * 19) % 58)}%`,
+                  }}
+                  initial={{ opacity: 0, y: 24, rotate: index % 2 === 0 ? -7 : 7 }}
+                  animate={{
+                    opacity: [0, 0.85, 0],
+                    y: [24, -16, -52],
+                    rotate: index % 2 === 0 ? [-7, 4, -2] : [7, -3, 2],
+                  }}
+                  transition={{
+                    delay: 0.3 + index * 0.17,
+                    duration: 2.4,
+                    ease: "easeOut",
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </div>
+          )}
+
+          <motion.div
+            className="relative mx-5 flex w-full max-w-3xl flex-col items-center text-center"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: shouldReduceMotion ? 0.2 : 0.7, ease: "easeOut" }}
+          >
+            <motion.div
+              className="relative mb-8 flex h-24 w-24 items-center justify-center rounded-full border border-white/15 bg-white text-neutral-950 shadow-2xl shadow-white/20"
+              initial={{ rotate: -12, scale: 0.82 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ delay: 0.15, duration: shouldReduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <motion.span
+                className="text-4xl font-semibold tracking-tight"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.35 }}
+              >
+                TS
+              </motion.span>
+              <motion.span
+                className="absolute inset-[-10px] rounded-full border border-white/25"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: [0.8, 1.28], opacity: [0, 0.85, 0] }}
+                transition={{ delay: 0.55, duration: shouldReduceMotion ? 0.2 : 1.4, ease: "easeOut" }}
+              />
+            </motion.div>
+
+            <motion.p
+              className="mb-4 text-sm font-semibold uppercase tracking-[0.42em] text-white/55"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75, duration: 0.4 }}
+            >
+              Words arriving with care
+            </motion.p>
+
+            <motion.h2
+              className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl"
+              initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ delay: shouldReduceMotion ? 0.1 : 0.95, duration: shouldReduceMotion ? 0.2 : 0.8 }}
+            >
+              TranSaintika
+            </motion.h2>
+
+            <motion.div
+              className="mt-8 h-1 w-full max-w-xs overflow-hidden rounded-full bg-white/10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.25 }}
+            >
+              <motion.div
+                className="h-full rounded-full bg-white"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ delay: shouldReduceMotion ? 0.1 : 1.25, duration: shouldReduceMotion ? 0.35 : 1.55, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function TranSaintikaLandingPage() {
   const services = [
     {
@@ -90,6 +224,8 @@ export default function TranSaintikaLandingPage() {
 
   return (
     <main className="min-h-screen scroll-smooth bg-white text-neutral-950">
+      <OpeningAnimation />
+
       <header className="sticky top-4 z-50 px-4">
         <nav className="mx-auto flex max-w-3xl items-center justify-between rounded-full border border-neutral-100 bg-white/90 px-5 py-3 shadow-xl shadow-neutral-200/70 backdrop-blur-xl md:px-7">
           <button
