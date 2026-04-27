@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 function Icon({ type, className = "h-5 w-5" }) {
   const iconProps = {
@@ -60,140 +59,10 @@ function Icon({ type, className = "h-5 w-5" }) {
   return null;
 }
 
-function OpeningAnimation() {
-  const [isVisible, setIsVisible] = useState(true);
+export default function TranSaintikaLandingPage() {
   const shouldReduceMotion = useReducedMotion();
   const floatingWords = ["Meaning", "Makna", "Clarity", "Bahasa", "Context", "Tone"];
 
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const timer = window.setTimeout(() => {
-      setIsVisible(false);
-      document.body.style.overflow = previousOverflow;
-    }, shouldReduceMotion ? 900 : 3400);
-
-    return () => {
-      window.clearTimeout(timer);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [shouldReduceMotion]);
-
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-neutral-950 text-white"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, y: "-4%" }}
-          transition={{ duration: shouldReduceMotion ? 0.2 : 0.75, ease: [0.76, 0, 0.24, 1] }}
-          aria-label="TranSaintika opening animation"
-        >
-          <motion.div
-            className="absolute inset-x-[-15%] top-1/2 h-56 -translate-y-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),transparent_62%)] blur-3xl"
-            initial={{ scaleX: 0.35, opacity: 0 }}
-            animate={{ scaleX: 1.15, opacity: shouldReduceMotion ? 0.25 : [0.2, 0.65, 0.2] }}
-            transition={{ duration: shouldReduceMotion ? 0.4 : 2.8, ease: "easeInOut" }}
-          />
-
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.08)_0%,transparent_30%,rgba(255,255,255,0.11)_52%,transparent_76%)]" />
-
-          {!shouldReduceMotion && (
-            <div className="absolute inset-0" aria-hidden="true">
-              {floatingWords.map((word, index) => (
-                <motion.span
-                  key={word}
-                  className="absolute rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/70 backdrop-blur-md"
-                  style={{
-                    left: `${12 + ((index * 15) % 72)}%`,
-                    top: `${18 + ((index * 19) % 58)}%`,
-                  }}
-                  initial={{ opacity: 0, y: 24, rotate: index % 2 === 0 ? -7 : 7 }}
-                  animate={{
-                    opacity: [0, 0.85, 0],
-                    y: [24, -16, -52],
-                    rotate: index % 2 === 0 ? [-7, 4, -2] : [7, -3, 2],
-                  }}
-                  transition={{
-                    delay: 0.3 + index * 0.17,
-                    duration: 2.4,
-                    ease: "easeOut",
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </div>
-          )}
-
-          <motion.div
-            className="relative mx-5 flex w-full max-w-3xl flex-col items-center text-center"
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: shouldReduceMotion ? 0.2 : 0.7, ease: "easeOut" }}
-          >
-            <motion.div
-              className="relative mb-8 flex h-24 w-24 items-center justify-center rounded-full border border-white/15 bg-white text-neutral-950 shadow-2xl shadow-white/20"
-              initial={{ rotate: -12, scale: 0.82 }}
-              animate={{ rotate: 0, scale: 1 }}
-              transition={{ delay: 0.15, duration: shouldReduceMotion ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <motion.span
-                className="text-4xl font-semibold tracking-tight"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45, duration: 0.35 }}
-              >
-                TS
-              </motion.span>
-              <motion.span
-                className="absolute inset-[-10px] rounded-full border border-white/25"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: [0.8, 1.28], opacity: [0, 0.85, 0] }}
-                transition={{ delay: 0.55, duration: shouldReduceMotion ? 0.2 : 1.4, ease: "easeOut" }}
-              />
-            </motion.div>
-
-            <motion.p
-              className="mb-4 text-sm font-semibold uppercase tracking-[0.42em] text-white/55"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.75, duration: 0.4 }}
-            >
-              Words arriving with care
-            </motion.p>
-
-            <motion.h2
-              className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl"
-              initial={{ opacity: 0, y: 24, filter: "blur(12px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: shouldReduceMotion ? 0.1 : 0.95, duration: shouldReduceMotion ? 0.2 : 0.8 }}
-            >
-              TranSaintika
-            </motion.h2>
-
-            <motion.div
-              className="mt-8 h-1 w-full max-w-xs overflow-hidden rounded-full bg-white/10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.25 }}
-            >
-              <motion.div
-                className="h-full rounded-full bg-white"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ delay: shouldReduceMotion ? 0.1 : 1.25, duration: shouldReduceMotion ? 0.35 : 1.55, ease: "easeInOut" }}
-              />
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-export default function TranSaintikaLandingPage() {
   const services = [
     {
       title: "Translation",
@@ -222,11 +91,24 @@ export default function TranSaintikaLandingPage() {
     }
   };
 
+  const heroTransition = {
+    duration: shouldReduceMotion ? 0.2 : 0.8,
+    ease: [0.22, 1, 0.36, 1],
+  };
+
+  const sectionReveal = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 36 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <main className="min-h-screen scroll-smooth bg-white text-neutral-950">
-      <OpeningAnimation />
-
-      <header className="sticky top-4 z-50 px-4">
+      <motion.header
+        className="sticky top-4 z-50 px-4"
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -18, scale: shouldReduceMotion ? 1 : 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.08 }}
+      >
         <nav className="mx-auto flex max-w-3xl items-center justify-between rounded-full border border-neutral-100 bg-white/90 px-5 py-3 shadow-xl shadow-neutral-200/70 backdrop-blur-xl md:px-7">
           <button
             type="button"
@@ -269,38 +151,105 @@ export default function TranSaintikaLandingPage() {
             WhatsApp
           </a>
         </nav>
-      </header>
+      </motion.header>
 
-      <section
+      <motion.section
         id="home"
-        className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1.1fr_0.9fr]"
+        className="relative mx-auto grid max-w-6xl items-center gap-12 overflow-hidden px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1.1fr_0.9fr]"
+        initial="hidden"
+        animate="visible"
       >
-        <div className="text-center lg:text-left">
-          <p className="mb-5 inline-flex rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-600">
+        <motion.div
+          className="pointer-events-none absolute inset-x-[-12%] top-24 h-72 bg-[radial-gradient(circle_at_center,rgba(23,23,23,0.1),transparent_64%)] blur-3xl"
+          initial={{ scaleX: 0.4, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: shouldReduceMotion ? 0.25 : [0.12, 0.3, 0.16] }}
+          transition={{ duration: shouldReduceMotion ? 0.3 : 2.4, ease: "easeInOut" }}
+          aria-hidden="true"
+        />
+
+        {!shouldReduceMotion && (
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            {floatingWords.map((word, index) => (
+              <motion.span
+                key={word}
+                className="absolute rounded-full border border-neutral-200 bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500 shadow-sm backdrop-blur-md"
+                style={{
+                  left: `${8 + ((index * 16) % 76)}%`,
+                  top: `${10 + ((index * 17) % 54)}%`,
+                }}
+                initial={{ opacity: 0, y: 24, rotate: index % 2 === 0 ? -7 : 7 }}
+                animate={{
+                  opacity: [0, 0.9, 0],
+                  y: [24, -14, -44],
+                  rotate: index % 2 === 0 ? [-7, 4, -2] : [7, -3, 2],
+                }}
+                transition={{
+                  delay: 0.2 + index * 0.15,
+                  duration: 2.15,
+                  ease: "easeOut",
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </div>
+        )}
+
+        <motion.div
+          className="relative z-10 text-center lg:text-left"
+          variants={{
+            hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={heroTransition}
+        >
+          <motion.p
+            className="mb-5 inline-flex rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-600"
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.15 }}
+          >
             Malang, Indonesia · English & Indonesian
-          </p>
+          </motion.p>
 
           <div className="mx-auto max-w-4xl lg:mx-0">
-            <h1
+            <motion.h1
               className="text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl md:text-6xl"
               style={{ lineHeight: 0.95, marginBottom: "0.35rem" }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24, filter: shouldReduceMotion ? "none" : "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.32 }}
             >
               TranSaintika Language Services
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg leading-8 text-neutral-600 md:text-xl" style={{ marginTop: 0 }}>
+            <motion.p
+              className="text-lg leading-8 text-neutral-600 md:text-xl"
+              style={{ marginTop: 0 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.52 }}
+            >
               We can translate what hands can write.
-            </p>
+            </motion.p>
           </div>
 
-          <p
+          <motion.p
             className="mx-auto max-w-2xl text-base leading-7 text-neutral-500 lg:mx-0"
             style={{ marginTop: "3rem" }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.7 }}
           >
             Clean, accurate, and reliable translation, editing, and proofreading services for documents written in English and Indonesian.
-          </p>
+          </motion.p>
 
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+          <motion.div
+            className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.88 }}
+          >
             <a
               href="https://wa.me/6285156501766"
               target="_blank"
@@ -316,10 +265,15 @@ export default function TranSaintikaLandingPage() {
             >
               View Services
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="relative mx-auto w-full max-w-md rounded-[2rem] border border-neutral-200 bg-neutral-50 p-6 shadow-sm">
+        <motion.div
+          className="relative z-10 mx-auto w-full max-w-md rounded-[2rem] border border-neutral-200 bg-neutral-50 p-6 shadow-sm"
+          initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.94, rotate: shouldReduceMotion ? 0 : -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.55 }}
+        >
           <div className="rounded-[1.5rem] bg-white p-6 shadow-sm">
             <div className="mb-6 flex items-center justify-between gap-5">
               <div>
@@ -341,12 +295,24 @@ export default function TranSaintikaLandingPage() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section id="services" className="border-y border-neutral-100 bg-neutral-50">
+      <motion.section
+        id="services"
+        className="border-y border-neutral-100 bg-neutral-50"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.25 }}
+        variants={sectionReveal}
+        transition={heroTransition}
+      >
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            variants={sectionReveal}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.08 }}
+          >
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">Services</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-950 md:text-4xl">
               Language support without unnecessary complexity.
@@ -354,28 +320,42 @@ export default function TranSaintikaLandingPage() {
             <p className="mt-5 text-base leading-7 text-neutral-600">
               Simple services for translating documents and polishing your writing.
             </p>
-          </div>
+          </motion.div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {services.map((service) => (
-              <article
+            {services.map((service, index) => (
+              <motion.article
                 key={service.title}
-                className="rounded-[1.5rem] border border-neutral-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="rounded-[1.5rem] border border-neutral-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                variants={sectionReveal}
+                transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.16 + index * 0.1 }}
+                whileHover={shouldReduceMotion ? undefined : { y: -4 }}
               >
                 <h3 className="text-xl font-semibold tracking-tight text-neutral-950">{service.title}</h3>
                 <p className="mt-4 min-h-28 text-sm leading-6 text-neutral-600">{service.description}</p>
                 <div className="mt-6 rounded-2xl bg-neutral-50 px-4 py-3 text-sm font-semibold text-neutral-950">
                   {service.rate}
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="contact" className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <motion.section
+        id="contact"
+        className="mx-auto max-w-6xl px-5 py-20 md:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.25 }}
+        variants={sectionReveal}
+        transition={heroTransition}
+      >
         <div className="grid gap-10 rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+          <motion.div
+            variants={sectionReveal}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.08 }}
+          >
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">Contact</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-950 md:text-4xl">
               Send your document.
@@ -383,14 +363,16 @@ export default function TranSaintikaLandingPage() {
             <p className="mt-5 text-base leading-7 text-neutral-600">
               Place your words in our care — together we carry meaning across languages, letting every journey begin with understanding.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid gap-4">
-            <a
+            <motion.a
               href="https://wa.me/6285156501766"
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-4 rounded-2xl border border-neutral-200 p-5 transition hover:border-neutral-950"
+              variants={sectionReveal}
+              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.16 }}
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
                 <Icon type="whatsapp" className="h-5 w-5" />
@@ -399,11 +381,13 @@ export default function TranSaintikaLandingPage() {
                 <span className="block text-sm text-neutral-500">WhatsApp</span>
                 <span className="block font-semibold text-neutral-950">+62 851 5650 1766</span>
               </span>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="mailto:hello@transaintika.com"
               className="group flex items-center gap-4 rounded-2xl border border-neutral-200 p-5 transition hover:border-neutral-950"
+              variants={sectionReveal}
+              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.26 }}
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
                 <Icon type="mail" className="h-5 w-5" />
@@ -412,9 +396,13 @@ export default function TranSaintikaLandingPage() {
                 <span className="block text-sm text-neutral-500">Email</span>
                 <span className="block font-semibold text-neutral-950">hello@transaintika.com</span>
               </span>
-            </a>
+            </motion.a>
 
-            <div className="flex items-center gap-4 rounded-2xl border border-neutral-200 p-5">
+            <motion.div
+              className="flex items-center gap-4 rounded-2xl border border-neutral-200 p-5"
+              variants={sectionReveal}
+              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.36 }}
+            >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
                 <Icon type="pin" className="h-5 w-5" />
               </span>
@@ -422,10 +410,10 @@ export default function TranSaintikaLandingPage() {
                 <span className="block text-sm text-neutral-500">Location</span>
                 <span className="block font-semibold text-neutral-950">Malang, Indonesia</span>
               </span>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <footer className="border-t border-neutral-100 px-5 py-8 text-center text-sm text-neutral-500">
         © {new Date().getFullYear()} TranSaintika Language Services. All rights reserved.
