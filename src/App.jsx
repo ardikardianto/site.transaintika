@@ -377,7 +377,7 @@ export default function TranSaintikaLandingPage() {
           >
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">Partners</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-950 md:text-4xl">
-              Academic connections across Indonesia.
+              Academic connections across Indonesia
             </h2>
           </motion.div>
 
