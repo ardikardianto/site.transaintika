@@ -362,7 +362,7 @@ export default function TranSaintikaLandingPage() {
 
       <motion.section
         id="partners"
-        className="overflow-hidden bg-white px-5 py-20 md:px-8"
+        className="overflow-hidden bg-white px-5 pb-10 pt-20 md:px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.25 }}
@@ -400,7 +400,7 @@ export default function TranSaintikaLandingPage() {
 
       <motion.section
         id="contact"
-        className="mx-auto max-w-6xl px-5 py-20 md:px-8"
+        className="mx-auto max-w-6xl px-5 pb-20 pt-8 md:px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.25 }}
