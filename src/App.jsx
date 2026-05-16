@@ -83,6 +83,17 @@ export default function TranSaintikaLandingPage() {
     "Academic and professional documents",
   ];
 
+  const partners = [
+    { name: "Universitas Indonesia", logo: "/partners/ui.svg" },
+    { name: "Universitas Gadjah Mada", logo: "/partners/ugm.png" },
+    { name: "IPB University", logo: "/partners/ipb.png" },
+    { name: "Institut Teknologi Bandung", logo: "/partners/itb.webp" },
+    { name: "Universitas Airlangga", logo: "/partners/unair.png" },
+    { name: "Universitas Udayana", logo: "/partners/udayana.png" },
+    { name: "Universitas Negeri Semarang", logo: "/partners/unnes.webp" },
+    { name: "Universitas Sebelas Maret", logo: "/partners/uns.webp" },
+  ];
+
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
 
@@ -132,6 +143,13 @@ export default function TranSaintikaLandingPage() {
               className="cursor-pointer bg-transparent p-0 transition hover:text-neutral-950"
             >
               Services
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection("partners")}
+              className="cursor-pointer bg-transparent p-0 transition hover:text-neutral-950"
+            >
+              Partners
             </button>
             <button
               type="button"
@@ -339,6 +357,44 @@ export default function TranSaintikaLandingPage() {
               </motion.article>
             ))}
           </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="partners"
+        className="overflow-hidden bg-white px-5 py-20 md:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.25 }}
+        variants={sectionReveal}
+        transition={heroTransition}
+      >
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            variants={sectionReveal}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.08 }}
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-neutral-500">Partners</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-950 md:text-4xl">
+              Academic connections across Indonesia.
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="partner-carousel mt-12"
+            aria-label="University partner logos"
+            variants={sectionReveal}
+            transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.16 }}
+          >
+            <div className={shouldReduceMotion ? "partner-track partner-track-static" : "partner-track"}>
+              {[...partners, ...partners].map((partner, index) => (
+                <div className="partner-logo-card" key={`${partner.name}-${index}`}>
+                  <img src={partner.logo} alt={partner.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 

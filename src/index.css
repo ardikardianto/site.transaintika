@@ -14,3 +14,57 @@ body {
 #root {
   width: 100%;
 }
+
+.partner-carousel {
+  overflow: hidden;
+  border: 1px solid rgb(229 229 229);
+  border-radius: 1.5rem;
+  background: white;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.partner-track {
+  display: flex;
+  width: max-content;
+  animation: partner-marquee 34s linear infinite;
+}
+
+.partner-track-static {
+  animation: none;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.partner-carousel:hover .partner-track {
+  animation-play-state: paused;
+}
+
+.partner-logo-card {
+  width: 210px;
+  height: 136px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  border-right: 1px solid rgb(229 229 229);
+}
+
+.partner-track-static .partner-logo-card {
+  border-bottom: 1px solid rgb(229 229 229);
+}
+
+.partner-logo-card img {
+  max-width: 150px;
+  max-height: 58px;
+  object-fit: contain;
+  filter: grayscale(1) saturate(0) contrast(1.55) brightness(0.48);
+  opacity: 0.9;
+}
+
+@keyframes partner-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
