@@ -124,7 +124,7 @@ export default function TranSaintikaLandingPage() {
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="liquid-glass-button relative z-10 cursor-pointer rounded-full bg-transparent px-3 py-1.5 text-xl font-bold tracking-tight text-neutral-950 md:text-3xl"
+            className="relative z-10 cursor-pointer rounded-full bg-transparent px-3 py-1.5 text-xl font-bold tracking-tight text-neutral-950 md:text-3xl"
           >
             TranSaintika
           </button>
