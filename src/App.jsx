@@ -124,37 +124,37 @@ export default function TranSaintikaLandingPage() {
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="relative z-10 cursor-pointer bg-transparent p-0 text-xl font-bold tracking-tight text-neutral-950 md:text-3xl"
+            className="liquid-glass-button relative z-10 cursor-pointer rounded-full bg-transparent px-3 py-1.5 text-xl font-bold tracking-tight text-neutral-950 md:text-3xl"
           >
             TranSaintika
           </button>
 
-          <div className="relative z-10 hidden items-center gap-8 text-sm font-medium text-neutral-700 md:flex">
+          <div className="relative z-10 hidden items-center gap-3 text-sm font-medium text-neutral-700 md:flex">
             <button
               type="button"
               onClick={() => scrollToSection("home")}
-              className="cursor-pointer bg-transparent p-0 transition hover:text-neutral-950"
+              className="liquid-glass-button cursor-pointer rounded-full bg-transparent px-4 py-2"
             >
               Home
             </button>
             <button
               type="button"
               onClick={() => scrollToSection("services")}
-              className="cursor-pointer bg-transparent p-0 transition hover:text-neutral-950"
+              className="liquid-glass-button cursor-pointer rounded-full bg-transparent px-4 py-2"
             >
               Services
             </button>
             <button
               type="button"
               onClick={() => scrollToSection("partners")}
-              className="cursor-pointer bg-transparent p-0 transition hover:text-neutral-950"
+              className="liquid-glass-button cursor-pointer rounded-full bg-transparent px-4 py-2"
             >
               Partners
             </button>
             <button
               type="button"
               onClick={() => scrollToSection("contact")}
-              className="cursor-pointer bg-transparent p-0 transition hover:text-neutral-950"
+              className="liquid-glass-button cursor-pointer rounded-full bg-transparent px-4 py-2"
             >
               Contact
             </button>
