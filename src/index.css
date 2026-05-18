@@ -182,11 +182,6 @@ body {
   display: grid;
   place-items: center;
   padding: 30px;
-  border-right: 1px solid rgb(229 229 229);
-}
-
-.partner-track-static .partner-logo-card {
-  border-bottom: 1px solid rgb(229 229 229);
 }
 
 .partner-logo-card img {
