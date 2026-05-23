@@ -164,7 +164,7 @@ export default function TranSaintikaLandingPage() {
             href="https://wa.me/6285156501766"
             target="_blank"
             rel="noreferrer"
-            className="liquid-glass-cta relative z-10 rounded-full px-5 py-2.5 text-sm font-medium text-white transition md:px-6"
+            className="prismatic-glass-cta relative z-10 rounded-full px-5 py-2.5 text-sm font-medium transition md:px-6"
           >
             WhatsApp
           </a>
@@ -272,7 +272,7 @@ export default function TranSaintikaLandingPage() {
               href="https://wa.me/6285156501766"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-neutral-800"
+              className="prismatic-glass-cta inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition"
             >
               Contact via WhatsApp <Icon type="arrow" className="h-4 w-4" />
             </a>
