@@ -179,30 +179,30 @@ body {
   background:
     conic-gradient(
       from 20deg,
-      rgba(12, 12, 15, 0.68) 0deg,
-      rgba(12, 12, 15, 0.64) 26deg,
-      rgba(255, 255, 255, 0.68) 40deg,
-      rgba(112, 198, 255, 0.44) 50deg,
-      rgba(255, 105, 150, 0.4) 59deg,
-      rgba(255, 219, 92, 0.34) 68deg,
-      rgba(255, 255, 255, 0.62) 80deg,
-      rgba(40, 37, 51, 0.68) 108deg,
-      rgba(255, 255, 255, 0.4) 142deg,
-      rgba(12, 12, 15, 0.66) 178deg,
-      rgba(255, 255, 255, 0.58) 212deg,
-      rgba(108, 156, 255, 0.42) 224deg,
-      rgba(255, 255, 255, 0.56) 238deg,
-      rgba(12, 12, 15, 0.66) 270deg,
-      rgba(255, 255, 255, 0.42) 314deg,
-      rgba(12, 12, 15, 0.68) 360deg
+      rgba(12, 12, 15, 0.82) 0deg,
+      rgba(12, 12, 15, 0.76) 24deg,
+      rgba(255, 255, 255, 0.92) 38deg,
+      rgba(82, 196, 255, 0.74) 49deg,
+      rgba(255, 75, 139, 0.72) 58deg,
+      rgba(255, 220, 54, 0.64) 67deg,
+      rgba(255, 255, 255, 0.86) 78deg,
+      rgba(36, 32, 48, 0.84) 106deg,
+      rgba(255, 255, 255, 0.56) 140deg,
+      rgba(12, 12, 15, 0.78) 176deg,
+      rgba(255, 255, 255, 0.86) 211deg,
+      rgba(74, 140, 255, 0.72) 223deg,
+      rgba(255, 255, 255, 0.82) 238deg,
+      rgba(12, 12, 15, 0.78) 270deg,
+      rgba(255, 255, 255, 0.58) 314deg,
+      rgba(12, 12, 15, 0.82) 360deg
     );
-  animation: prismatic-border-spin 14s linear infinite;
-  opacity: 0.72;
+  animation: prismatic-border-spin 10s linear infinite;
+  opacity: 0.9;
 }
 
 .prismatic-glass-cta::after {
   z-index: -1;
-  inset: 1px;
+  inset: 2px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background:
     linear-gradient(180deg, rgba(38, 38, 38, 0.96), rgba(10, 10, 10, 0.93)),
@@ -223,8 +223,8 @@ body {
 
 .prismatic-glass-cta:hover::before,
 .prismatic-glass-cta:focus-visible::before {
-  animation-duration: 9s;
-  opacity: 0.82;
+  animation-duration: 7s;
+  opacity: 1;
 }
 
 .prismatic-glass-cta:focus-visible {
