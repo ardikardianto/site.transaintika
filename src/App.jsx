@@ -263,7 +263,7 @@ export default function TranSaintikaLandingPage() {
           </motion.p>
 
           <motion.div
-            className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
+            className="mt-9 flex flex-row justify-center gap-3 lg:justify-start"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.88 }}
@@ -272,14 +272,17 @@ export default function TranSaintikaLandingPage() {
               href="https://wa.me/6285156501766"
               target="_blank"
               rel="noreferrer"
-              className="prismatic-glass-cta inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition"
+              className="hero-whatsapp-cta prismatic-glass-cta inline-flex h-12 w-12 shrink-0 items-center justify-center gap-0 rounded-full px-0 py-0 text-sm font-semibold transition sm:h-auto sm:w-auto sm:gap-2 sm:px-6 sm:py-3"
+              aria-label="Contact via WhatsApp"
             >
-              Contact via WhatsApp <Icon type="arrow" className="h-4 w-4" />
+              <Icon type="whatsapp" className="h-5 w-5 sm:hidden" />
+              <span className="hidden sm:inline">Contact via WhatsApp</span>
+              <Icon type="arrow" className="hidden h-4 w-4 sm:block" />
             </a>
             <button
               type="button"
               onClick={() => scrollToSection("services")}
-              className="inline-flex cursor-pointer items-center justify-center rounded-full border border-neutral-300 bg-transparent px-6 py-3 text-sm font-semibold text-neutral-900 transition hover:border-neutral-950"
+              className="inline-flex h-12 flex-1 cursor-pointer items-center justify-center rounded-full border border-neutral-300 bg-transparent px-4 py-3 text-sm font-semibold text-neutral-900 transition hover:border-neutral-950 sm:h-auto sm:flex-none sm:px-6"
             >
               View Services
             </button>

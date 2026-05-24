@@ -244,6 +244,27 @@ body {
   }
 }
 
+@media (max-width: 639px) {
+  .hero-whatsapp-cta {
+    box-shadow:
+      0 10px 20px rgba(15, 23, 42, 0.14),
+      0 3px 8px rgba(15, 23, 42, 0.1);
+  }
+
+  .hero-whatsapp-cta::before {
+    display: none;
+  }
+
+  .hero-whatsapp-cta::after {
+    inset: 0;
+    border: 0;
+    background: rgb(10 10 10);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -8px 14px rgba(255, 255, 255, 0.06);
+  }
+}
+
 .partner-carousel {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
