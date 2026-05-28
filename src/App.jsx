@@ -112,6 +112,33 @@ export default function TranSaintikaLandingPage() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const handleServicePointerMove = (event) => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rotateX = ((y / rect.height) - 0.5) * -4;
+    const rotateY = ((x / rect.width) - 0.5) * 4;
+
+    card.style.setProperty("--service-rotate-x", `${rotateX.toFixed(2)}deg`);
+    card.style.setProperty("--service-rotate-y", `${rotateY.toFixed(2)}deg`);
+    card.style.setProperty("--service-highlight-x", `${((x / rect.width) * 100).toFixed(2)}%`);
+    card.style.setProperty("--service-highlight-y", `${((y / rect.height) * 100).toFixed(2)}%`);
+  };
+
+  const handleServicePointerLeave = (event) => {
+    const card = event.currentTarget;
+
+    card.style.setProperty("--service-rotate-x", "0deg");
+    card.style.setProperty("--service-rotate-y", "0deg");
+    card.style.setProperty("--service-highlight-x", "50%");
+    card.style.setProperty("--service-highlight-y", "20%");
+  };
+
   return (
     <main className="min-h-screen scroll-smooth bg-white text-neutral-950">
       <motion.header
@@ -344,15 +371,20 @@ export default function TranSaintikaLandingPage() {
             {services.map((service, index) => (
               <motion.article
                 key={service.title}
-                className="rounded-[1.5rem] border border-neutral-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                className="h-full"
                 variants={sectionReveal}
                 transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.16 + index * 0.1 }}
-                whileHover={shouldReduceMotion ? undefined : { y: -4 }}
               >
-                <h3 className="text-xl font-semibold tracking-tight text-neutral-950">{service.title}</h3>
-                <p className="mt-4 min-h-28 text-sm leading-6 text-neutral-600">{service.description}</p>
-                <div className="mt-6 rounded-2xl bg-neutral-50 px-4 py-3 text-sm font-semibold text-neutral-950">
-                  {service.rate}
+                <div
+                  className="service-card-interaction h-full rounded-[1.5rem] border border-neutral-200 bg-white p-6 shadow-sm"
+                  onPointerMove={handleServicePointerMove}
+                  onPointerLeave={handleServicePointerLeave}
+                >
+                  <h3 className="text-xl font-semibold tracking-tight text-neutral-950">{service.title}</h3>
+                  <p className="mt-4 min-h-28 text-sm leading-6 text-neutral-600">{service.description}</p>
+                  <div className="service-rate-pill mt-6 rounded-2xl bg-neutral-50 px-4 py-3 text-sm font-semibold text-neutral-950">
+                    {service.rate}
+                  </div>
                 </div>
               </motion.article>
             ))}

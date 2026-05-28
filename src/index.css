@@ -242,6 +242,81 @@ body {
   }
 }
 
+.service-card-interaction {
+  --service-rotate-x: 0deg;
+  --service-rotate-y: 0deg;
+  --service-highlight-x: 50%;
+  --service-highlight-y: 20%;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: perspective(900px) rotateX(var(--service-rotate-x)) rotateY(var(--service-rotate-y)) translateY(0);
+  transform-style: preserve-3d;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 180ms ease;
+}
+
+.service-card-interaction::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--service-highlight-x) var(--service-highlight-y), rgba(255, 255, 255, 0.82), transparent 32%),
+    linear-gradient(135deg, rgba(255, 202, 92, 0.12), transparent 44%);
+  content: "";
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.service-card-interaction > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card-interaction:hover,
+.service-card-interaction:focus-within {
+  border-color: rgba(255, 202, 92, 0.5);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.1);
+  transform: perspective(900px) rotateX(var(--service-rotate-x)) rotateY(var(--service-rotate-y)) translateY(-4px);
+}
+
+.service-card-interaction:hover::before,
+.service-card-interaction:focus-within::before {
+  opacity: 1;
+}
+
+.service-rate-pill {
+  width: fit-content;
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.service-card-interaction:hover .service-rate-pill,
+.service-card-interaction:focus-within .service-rate-pill {
+  background: rgba(255, 202, 92, 0.22);
+  box-shadow: 0 10px 24px rgba(255, 202, 92, 0.2);
+  transform: translateY(-5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card-interaction,
+  .service-card-interaction:hover,
+  .service-card-interaction:focus-within {
+    transform: none;
+  }
+
+  .service-rate-pill,
+  .service-card-interaction:hover .service-rate-pill,
+  .service-card-interaction:focus-within .service-rate-pill {
+    transform: none;
+  }
+}
+
 .partner-carousel {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
