@@ -454,13 +454,11 @@ export default function TranSaintikaLandingPage() {
           </motion.div>
 
           <div className="grid gap-4">
-            <motion.a
+            <a
               href="https://wa.me/6285156501766"
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-4 rounded-2xl border border-neutral-200 p-5 transition hover:border-neutral-950"
-              variants={sectionReveal}
-              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.16 }}
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
                 <Icon type="whatsapp" className="h-5 w-5" />
@@ -469,13 +467,11 @@ export default function TranSaintikaLandingPage() {
                 <span className="block text-sm text-neutral-500">WhatsApp</span>
                 <span className="block font-semibold text-neutral-950">+62 851 5650 1766</span>
               </span>
-            </motion.a>
+            </a>
 
-            <motion.a
+            <a
               href="mailto:hello@transaintika.com"
               className="group flex items-center gap-4 rounded-2xl border border-neutral-200 p-5 transition hover:border-neutral-950"
-              variants={sectionReveal}
-              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.26 }}
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
                 <Icon type="mail" className="h-5 w-5" />
@@ -484,12 +480,10 @@ export default function TranSaintikaLandingPage() {
                 <span className="block text-sm text-neutral-500">Email</span>
                 <span className="block font-semibold text-neutral-950">hello@transaintika.com</span>
               </span>
-            </motion.a>
+            </a>
 
-            <motion.div
+            <div
               className="flex items-center gap-4 rounded-2xl border border-neutral-200 p-5"
-              variants={sectionReveal}
-              transition={{ ...heroTransition, delay: shouldReduceMotion ? 0 : 0.36 }}
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white">
                 <Icon type="pin" className="h-5 w-5" />
@@ -498,7 +492,7 @@ export default function TranSaintikaLandingPage() {
                 <span className="block text-sm text-neutral-500">Location</span>
                 <span className="block font-semibold text-neutral-950">Malang, Indonesia</span>
               </span>
-            </motion.div>
+            </div>
           </div>
         </div>
       </motion.section>
