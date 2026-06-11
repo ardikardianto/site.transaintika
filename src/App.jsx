@@ -327,7 +327,7 @@ export default function TranSaintikaLandingPage() {
                 <p className="text-sm text-neutral-500">per word</p>
               </div>
               <div className="rounded-full bg-neutral-950 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white">
-                Clear rates
+                Starting rate
               </div>
             </div>
 
